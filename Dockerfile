@@ -6,7 +6,7 @@ RUN apt-get update \
 
 WORKDIR /usr/src/app
 COPY requirements.txt ./
-RUN python3 -mvenv venv && source venv/bin/activate && pip3 install --upgrade pip && pip3 install -r requirements.txt
+RUN python3 -mvenv venv && . venv/bin/activate && pip3 install --upgrade pip && pip3 install -r requirements.txt
 COPY . .
 
 RUN python3 ./manage.py initial_setup
