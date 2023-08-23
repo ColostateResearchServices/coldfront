@@ -1,12 +1,10 @@
-FROM python:3.6
+FROM python:3.11-alpine
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk update
 
 WORKDIR /usr/src/app
-# COPY requirements.txt ./
-RUN python3 -mvenv venv && . venv/bin/activate && pip3 install --upgrade pip && pip3 install coldfront
+COPY requirements.txt ./
+RUN pip3 install -r requirements.txt
 COPY . .
 
 RUN python3 ./manage.py initial_setup
