@@ -5,9 +5,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
-COPY requirements.txt ./
-RUN python3 -mvenv venv && . venv/bin/activate && pip3 install --upgrade pip && pip3 install -r requirements.txt
-COPY . .
+# COPY requirements.txt ./
+RUN python3 -mvenv venv && . venv/bin/activate && pip3 install --upgrade pip && pip3 install coldfront
+# COPY . .
 
 RUN python3 ./manage.py initial_setup
 RUN python3 ./manage.py load_test_data
