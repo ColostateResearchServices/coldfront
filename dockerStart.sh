@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ${INITIALIZE_DB} -eq "TRUE"]
+if [ ${INITIALIZE_DB} = "TRUE"]
 then
     python3 ./manage.py initial_setup
     python3 ./manage.py load_test_data
